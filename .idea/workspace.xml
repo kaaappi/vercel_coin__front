@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="53b6e84a-fe1b-45b6-8f9e-e7a5ce413d63" name="Changes" comment="refactor (minor changes) : code clean up">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_12_12_2023_15_43_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_12_12_2023_15_44_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/action-creators/coin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/action-creators/coin.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="development" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;history&quot;: [
+    {
+      &quot;searchQuery&quot;: &quot;https://github.com/kaaappi/coinGecko/tree/coinGecko&quot;,
+      &quot;state&quot;: &quot;OPEN&quot;,
+      &quot;assignee&quot;: &quot;kaaappi&quot;
+    }
+  ],
+  &quot;lastFilter&quot;: {
+    &quot;searchQuery&quot;: &quot;https://github.com/kaaappi/coinGecko/tree/coinGecko&quot;,
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;kaaappi&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="3daeec05-8364-4865-b511-ea6d3cca3196" />
+        <option name="url" value="https://github.com/kaaappi/coinGecko-copy.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2Sb6ZkXNKHk6dmOlxiYzZmeQFl5" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "ignore.virus.scanning.warn.message": "true",
+    "javascript.nodejs.core.library.configured.version": "20.5.1",
+    "javascript.nodejs.core.library.typings.version": "20.5.9",
+    "last_opened_file_path": "D:/all_in_it/foo/typeScript/server-coinGecko",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\ivank\\AppData\\Roaming\\npm\\node_modules\\prettier",
+    "settings.editor.selected.configurable": "settings.javascript.prettier",
+    "ts.external.directory.path": "D:\\all_in_it\\foo\\typeScript\\coins-try-fix\\node_modules\\typescript\\lib"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\all_in_it\foo\typeScript\coins-try-fix\src\components" />
+      <recent name="D:\all_in_it\foo\typeScript\coins-try-fix" />
+      <recent name="D:\all_in_it\foo\typeScript\coins-try-fix\src\images" />
+      <recent name="D:\all_in_it\foo\typeScript\coins-try-fix\src\components\CoinsList\images" />
+      <recent name="D:\all_in_it\foo\typeScript\coins-try-fix\src\styles" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="53b6e84a-fe1b-45b6-8f9e-e7a5ce413d63" name="Changes" comment="" />
+      <created>1689402990911</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1689402990911</updated>
+      <workItem from="1689402991930" duration="2567000" />
+      <workItem from="1689408046790" duration="11332000" />
+      <workItem from="1689445057148" duration="17831000" />
+      <workItem from="1689672375517" duration="28172000" />
+      <workItem from="1689840630498" duration="2803000" />
+      <workItem from="1690199662085" duration="43991000" />
+      <workItem from="1690369945228" duration="37966000" />
+      <workItem from="1690882150733" duration="38954000" />
+      <workItem from="1691229208864" duration="82000" />
+      <workItem from="1691229332155" duration="35358000" />
+      <workItem from="1691395180511" duration="3777000" />
+      <workItem from="1691605638605" duration="2275000" />
+      <workItem from="1691664625526" duration="4186000" />
+      <workItem from="1692087195563" duration="10704000" />
+      <workItem from="1692344084352" duration="24190000" />
+      <workItem from="1692519465951" duration="39178000" />
+      <workItem from="1692738720765" duration="11243000" />
+      <workItem from="1692975784135" duration="1255000" />
+      <workItem from="1692992626448" duration="12980000" />
+      <workItem from="1693392708148" duration="3000" />
+      <workItem from="1693392764243" duration="8000" />
+      <workItem from="1693399559634" duration="4741000" />
+      <workItem from="1693421231662" duration="698000" />
+      <workItem from="1693422454271" duration="1522000" />
+      <workItem from="1693554079704" duration="11048000" />
+      <workItem from="1693662553022" duration="8568000" />
+      <workItem from="1693737596797" duration="1598000" />
+      <workItem from="1693744646171" duration="37787000" />
+      <workItem from="1694332685573" duration="605000" />
+      <workItem from="1694358223824" duration="17000" />
+      <workItem from="1694695652258" duration="22623000" />
+      <workItem from="1694879320113" duration="5579000" />
+      <workItem from="1695477978031" duration="1692000" />
+      <workItem from="1695638907300" duration="604000" />
+      <workItem from="1695721141716" duration="1674000" />
+      <workItem from="1696353701457" duration="126000" />
+      <workItem from="1696353840986" duration="1182000" />
+      <workItem from="1696444639244" duration="592000" />
+      <workItem from="1696505077338" duration="104000" />
+      <workItem from="1697981413168" duration="10000" />
+      <workItem from="1698011060942" duration="36000" />
+      <workItem from="1698013934418" duration="2213000" />
+      <workItem from="1698776432440" duration="31000" />
+      <workItem from="1698779158138" duration="3639000" />
+      <workItem from="1698819646771" duration="10361000" />
+      <workItem from="1698930987320" duration="604000" />
+      <workItem from="1698943573220" duration="1490000" />
+      <workItem from="1702294271387" duration="1125000" />
+      <workItem from="1702411360744" duration="165000" />
+      <workItem from="1702411579493" duration="461000" />
+      <workItem from="1702412049117" duration="25000" />
+      <workItem from="1702412081899" duration="7000" />
+      <workItem from="1702412726211" duration="15000" />
+      <workItem from="1708265405566" duration="1340000" />
+    </task>
+    <task id="LOCAL-00001" summary="initial">
+      <option name="closed" value="true" />
+      <created>1690963514372</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1690963514372</updated>
+    </task>
+    <task id="LOCAL-00002" summary="mid-changes">
+      <option name="closed" value="true" />
+      <created>1692540351693</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1692540351693</updated>
+    </task>
+    <task id="LOCAL-00003" summary="charts-added">
+      <option name="closed" value="true" />
+      <created>1692718685749</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1692718685749</updated>
+    </task>
+    <task id="LOCAL-00004" summary="add-days-change">
+      <option name="closed" value="true" />
+      <created>1692889093951</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1692889093951</updated>
+    </task>
+    <task id="LOCAL-00005" summary="home-page-upd">
+      <option name="closed" value="true" />
+      <created>1692950371121</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1692950371121</updated>
+    </task>
+    <task id="LOCAL-00006" summary="home-page-upd">
+      <option name="closed" value="true" />
+      <created>1692998065622</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1692998065622</updated>
+    </task>
+    <task id="LOCAL-00007" summary="refactor (minor changes) : code clean up">
+      <option name="closed" value="true" />
+      <created>1693060133072</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1693060133072</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="initial" />
+    <MESSAGE value="mid-changes" />
+    <MESSAGE value="charts-added" />
+    <MESSAGE value="add-days-change" />
+    <MESSAGE value="home-page-upd" />
+    <MESSAGE value="refactor (minor changes) : code clean up" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor (minor changes) : code clean up" />
+  </component>
+</project>

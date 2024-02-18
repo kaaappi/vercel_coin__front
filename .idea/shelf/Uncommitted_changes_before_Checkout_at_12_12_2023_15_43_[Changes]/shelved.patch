@@ -1,0 +1,194 @@
+Index: src/components/Chart/LineChart.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React, { FC, useEffect, useState } from \"react\";\r\nimport axios from \"axios\";\r\nimport { PricesDataState } from \"../../types/coin\";\r\nimport {\r\n  Chart as ChartJS,\r\n  CategoryScale,\r\n  LinearScale,\r\n  PointElement,\r\n  LineElement,\r\n  Title,\r\n  Tooltip,\r\n  Legend,\r\n} from \"chart.js\";\r\nimport { Line } from \"react-chartjs-2\";\r\n\r\nChartJS.register(\r\n  CategoryScale,\r\n  LinearScale,\r\n  PointElement,\r\n  LineElement,\r\n  Title,\r\n  Tooltip,\r\n  Legend\r\n);\r\n\r\nconst options = {\r\n  responsive: true,\r\n  scales: {\r\n    x: {\r\n      display: true,\r\n      grid: {\r\n        color: \"rgb(51, 65, 85)\",\r\n      },\r\n      color: \"red\",\r\n    },\r\n    y: {\r\n      display: true,\r\n      grid: {\r\n        color: \"rgb(51, 65, 85)\",\r\n      },\r\n    },\r\n  },\r\n};\r\n\r\nfunction format_time(s: number) {\r\n  return new Date(s)\r\n    .toLocaleDateString(\"ua\", {\r\n      year: \"numeric\",\r\n      month: \"numeric\",\r\n      day: \"numeric\",\r\n    })\r\n    .replaceAll(\"/\", \".\");\r\n}\r\n\r\ninterface ILineChart {\r\n  coin_id?: string;\r\n  days: number;\r\n}\r\n\r\nconst LineChart: FC<ILineChart> = ({ coin_id, days }) => {\r\n  const [dataForChart, setDataForChart] = useState<number[][]>();\r\n  const [chartData, setChartData] = useState<any>({\r\n    datasets: [],\r\n    labels: [],\r\n  });\r\n\r\n  useEffect(() => {\r\n    if (dataForChart && dataForChart.length >= 1) {\r\n      setChartData({\r\n        labels: dataForChart.map((data) => format_time(data[0])),\r\n        datasets: [\r\n          {\r\n            data: dataForChart.map((data) => data[1]),\r\n            borderWidth: 2,\r\n            label: `${coin_id}`,\r\n            pointStyle: false,\r\n            borderColor: \"rgba(75, 192, 192, 1)\",\r\n            options: {\r\n              plugins: {\r\n                title: {\r\n                  display: true,\r\n                  text: \"Grid Line Settings\",\r\n                },\r\n              },\r\n            },\r\n          },\r\n        ],\r\n      });\r\n    }\r\n  }, [dataForChart]);\r\n\r\n  useEffect(() => {\r\n    fetchPricesData();\r\n  }, [days]);\r\n\r\n  async function fetchPricesData() {\r\n    try {\r\n      const response = await axios.get<PricesDataState>(\r\n        `https://coingecko-back.onrender.com/getChartForCoin/${coin_id}/${days}`\r\n      );\r\n      setDataForChart(response.data.prices);\r\n    } catch (e) {\r\n      alert(e);\r\n    }\r\n  }\r\n\r\n  return (\r\n    <Line data={chartData} width={\"800px\"} height={\"600px\"} options={options} />\r\n  );\r\n};\r\nexport default LineChart;\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/components/Chart/LineChart.tsx b/src/components/Chart/LineChart.tsx
+--- a/src/components/Chart/LineChart.tsx	
++++ b/src/components/Chart/LineChart.tsx	
+@@ -96,7 +96,7 @@
+   async function fetchPricesData() {
+     try {
+       const response = await axios.get<PricesDataState>(
+-        `https://coingecko-back.onrender.com/getChartForCoin/${coin_id}/${days}`
++        `localhost:4000/getChartForCoin/${coin_id}/${days}`
+       );
+       setDataForChart(response.data.prices);
+     } catch (e) {
+Index: package-lock.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/package-lock.json b/package-lock.json
+--- a/package-lock.json	
++++ b/package-lock.json	
+@@ -30,7 +30,7 @@
+         "react-dom": "^18.2.0",
+         "react-error-boundary": "^4.0.11",
+         "react-redux": "^8.1.1",
+-        "react-router-dom": "^6.14.2",
++        "react-router-dom": "^6.20.1",
+         "react-scripts": "5.0.1",
+         "redux": "^4.2.1",
+         "redux-thunk": "^2.4.2",
+@@ -3288,11 +3288,11 @@
+       }
+     },
+     "node_modules/@remix-run/router": {
+-      "version": "1.7.2",
+-      "resolved": "https://registry.npmjs.org/@remix-run/router/-/router-1.7.2.tgz",
+-      "integrity": "sha512-7Lcn7IqGMV+vizMPoEl5F0XDshcdDYtMI6uJLQdQz5CfZAwy3vvGKYSUk789qndt5dEC4HfSjviSYlSoHGL2+A==",
++      "version": "1.13.1",
++      "resolved": "https://registry.npmjs.org/@remix-run/router/-/router-1.13.1.tgz",
++      "integrity": "sha512-so+DHzZKsoOcoXrILB4rqDkMDy7NLMErRdOxvzvOKb507YINKUP4Di+shbTZDhSE/pBZ+vr7XGIpcOO0VLSA+Q==",
+       "engines": {
+-        "node": ">=14"
++        "node": ">=14.0.0"
+       }
+     },
+     "node_modules/@rollup/plugin-babel": {
+@@ -14850,29 +14850,29 @@
+       }
+     },
+     "node_modules/react-router": {
+-      "version": "6.14.2",
+-      "resolved": "https://registry.npmjs.org/react-router/-/react-router-6.14.2.tgz",
+-      "integrity": "sha512-09Zss2dE2z+T1D03IheqAFtK4UzQyX8nFPWx6jkwdYzGLXd5ie06A6ezS2fO6zJfEb/SpG6UocN2O1hfD+2urQ==",
++      "version": "6.20.1",
++      "resolved": "https://registry.npmjs.org/react-router/-/react-router-6.20.1.tgz",
++      "integrity": "sha512-ccvLrB4QeT5DlaxSFFYi/KR8UMQ4fcD8zBcR71Zp1kaYTC5oJKYAp1cbavzGrogwxca+ubjkd7XjFZKBW8CxPA==",
+       "dependencies": {
+-        "@remix-run/router": "1.7.2"
++        "@remix-run/router": "1.13.1"
+       },
+       "engines": {
+-        "node": ">=14"
++        "node": ">=14.0.0"
+       },
+       "peerDependencies": {
+         "react": ">=16.8"
+       }
+     },
+     "node_modules/react-router-dom": {
+-      "version": "6.14.2",
+-      "resolved": "https://registry.npmjs.org/react-router-dom/-/react-router-dom-6.14.2.tgz",
+-      "integrity": "sha512-5pWX0jdKR48XFZBuJqHosX3AAHjRAzygouMTyimnBPOLdY3WjzUSKhus2FVMihUFWzeLebDgr4r8UeQFAct7Bg==",
++      "version": "6.20.1",
++      "resolved": "https://registry.npmjs.org/react-router-dom/-/react-router-dom-6.20.1.tgz",
++      "integrity": "sha512-npzfPWcxfQN35psS7rJgi/EW0Gx6EsNjfdJSAk73U/HqMEJZ2k/8puxfwHFgDQhBGmS3+sjnGbMdMSV45axPQw==",
+       "dependencies": {
+-        "@remix-run/router": "1.7.2",
+-        "react-router": "6.14.2"
++        "@remix-run/router": "1.13.1",
++        "react-router": "6.20.1"
+       },
+       "engines": {
+-        "node": ">=14"
++        "node": ">=14.0.0"
+       },
+       "peerDependencies": {
+         "react": ">=16.8",
+Index: src/components/CoinItemPage.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React, { FC, useEffect, useState } from \"react\";\r\nimport { SingleCoinState } from \"../types/coin\";\r\nimport axios from \"axios\";\r\nimport { useNavigate, useParams } from \"react-router-dom\";\r\nimport ArrowPrice from \"../images/arrow-for-price-change/ArrowPrice\";\r\nimport ArrowChangePercentage from \"../images/arrow-change-percentage/ArrowChangePercentage\";\r\nimport Reddit from \"../images/logos/Reddit\";\r\nimport LineChart from \"./Chart/LineChart\";\r\n\r\ntype CoinItemPageParams = {\r\n  id: string;\r\n};\r\nconst CoinItemPage: FC = () => {\r\n  const [coin, setCoin] = useState<SingleCoinState | null>(null);\r\n  const [days, setDays] = useState(30);\r\n\r\n  const { id } = useParams<CoinItemPageParams>();\r\n  const navigate = useNavigate();\r\n\r\n  async function fetchSingleCoin() {\r\n    try {\r\n      const response = await axios.get<SingleCoinState>(\r\n        `https://coingecko-back.onrender.com/getCoinData/${id}`\r\n      );\r\n      setCoin(response.data);\r\n    } catch (e) {\r\n      alert(e);\r\n    }\r\n  }\r\n  useEffect(() => {\r\n    fetchSingleCoin();\r\n  }, []);\r\n\r\n  if (!coin) return null;\r\n  return (\r\n    <div className={\"wrapper\"}>\r\n      <div className={\"header__button\"}>\r\n        <button onClick={() => navigate(\"/coins\")} className=\"btn\">\r\n          Back\r\n        </button>\r\n      </div>\r\n      <div className={\"overview\"}>\r\n        <div className={\"left-column\"}>\r\n          <div className={\"overview__rank\"}>Rank #{coin.market_cap_rank}</div>\r\n          <div className={\"overview__inline-flex\"}>\r\n            <img src={coin.image} />\r\n            <span className={\"overview__name\"}>\r\n              {coin.name} ({coin.symbol})\r\n            </span>\r\n          </div>\r\n          <div className={\"overview__inline-flex\"}>\r\n            <span className={\"overview__price\"}>\r\n              ${coin.price_in_usd.toLocaleString()}\r\n            </span>\r\n            <span className={\"overview__24h\"}>\r\n              <ArrowPrice\r\n                className={\r\n                  coin.price_change_percentage_24h > 0\r\n                    ? \"arrow-green\"\r\n                    : \"arrow-red\"\r\n                }\r\n              />\r\n              <span\r\n                className={\r\n                  coin.price_change_percentage_24h > 0\r\n                    ? \"positive overview__percentage\"\r\n                    : \"negative overview__percentage\"\r\n                }\r\n              >\r\n                {Number(coin.price_change_percentage_24h.toFixed(1))}%\r\n              </span>\r\n            </span>\r\n          </div>\r\n          <div className={\"overview__inline-flex\"}>\r\n            <span className={\"overview__info__vs\"}>\r\n              {coin.price_in_btc} BTC\r\n            </span>\r\n            <span className={\"overview__info__vs__percentage\"}>\r\n              <span\r\n                className={\r\n                  coin.market_cap_change_percentage_24h_in_btc > 0\r\n                    ? \"positive \"\r\n                    : \"negative\"\r\n                }\r\n              >\r\n                {coin.market_cap_change_percentage_24h_in_btc.toFixed(1)}%\r\n              </span>\r\n              <ArrowChangePercentage\r\n                className={\r\n                  coin.market_cap_change_percentage_24h_in_btc > 0\r\n                    ? \"arrow-green \"\r\n                    : \"arrow-red\"\r\n                }\r\n              />\r\n            </span>\r\n          </div>\r\n          <div className={\"overview__stats\"}>\r\n            <div className={\"stats__column\"}>\r\n              <div className={\"stats__item\"}>\r\n                <div className={\"stats__title\"}>Market Cap</div>\r\n                <div className={\"stats__info\"}>\r\n                  ${coin.market_cap_in_usd.toLocaleString()}\r\n                </div>\r\n              </div>\r\n              <div className={\"stats__item\"}>\r\n                <div className={\"stats__title\"}>24 Hour Trading Vol</div>\r\n                <div className={\"stats__info\"}>\r\n                  ${coin.total_volume_in_usd.toLocaleString()}\r\n                </div>\r\n              </div>\r\n              <div className={\"stats__item\"}>\r\n                <div className={\"stats__title\"}>Fully Diluted Valuation</div>\r\n                <div className={\"stats__info\"}>\r\n                  ${coin.fully_diluted_valuation_in_usd.toLocaleString()}\r\n                </div>\r\n              </div>\r\n            </div>\r\n            <div className={\"stats__column\"}>\r\n              <div className={\"stats__item\"}>\r\n                <div className={\"stats__title\"}>Circulating Supply</div>\r\n                <div className={\"stats__info\"}>\r\n                  {coin.total_supply.toLocaleString()}\r\n                </div>\r\n              </div>\r\n              <div className={\"stats__item\"}>\r\n                <div className={\"stats__title\"}>Total Supply</div>\r\n                <div className={\"stats__info\"}>\r\n                  {coin.total_supply.toLocaleString()}\r\n                </div>\r\n              </div>\r\n              <div className={\"stats__item\"}>\r\n                <div className={\"stats__title\"}>Max Supply</div>\r\n                <div className={\"stats__info\"}>\r\n                  {coin.max_supply !== undefined && coin.max_supply !== null\r\n                    ? coin.max_supply.toLocaleString()\r\n                    : \"No data\"}\r\n                  {/*${coin.market_data.max_supply.toLocaleString()}*/}\r\n                </div>\r\n              </div>\r\n            </div>\r\n          </div>\r\n          <div className={\"days\"}>\r\n            <button className={\"btn overview__btn\"} onClick={() => setDays(1)}>\r\n              24h\r\n            </button>\r\n            <button className={\"btn overview__btn\"} onClick={() => setDays(7)}>\r\n              7d\r\n            </button>\r\n            <button className={\"btn overview__btn\"} onClick={() => setDays(14)}>\r\n              14d\r\n            </button>\r\n            <button className={\"btn overview__btn\"} onClick={() => setDays(30)}>\r\n              30d\r\n            </button>\r\n            <button className={\"btn overview__btn\"} onClick={() => setDays(90)}>\r\n              90d\r\n            </button>\r\n            <button\r\n              className={\"btn overview__btn\"}\r\n              onClick={() => setDays(180)}\r\n            >\r\n              180d\r\n            </button>\r\n            <button\r\n              className={\"btn overview__btn\"}\r\n              onClick={() => setDays(365)}\r\n            >\r\n              1y\r\n            </button>\r\n          </div>\r\n          <div className={\"chart\"}>\r\n            <LineChart coin_id={coin.id} days={days} />\r\n          </div>\r\n        </div>\r\n        <div className={\"right-column\"}>\r\n          <h2 className={\"info__header\"}>Info</h2>\r\n          <div className={\"info__content\"}>\r\n            <div className={\"info__item\"}>\r\n              <span>Website</span>\r\n              <div>\r\n                <a className={\"item__link\"} href={coin.links_homepage[0]}>\r\n                  {\r\n                    coin.links_homepage[0]\r\n                      .replace(/^(https?:\\/\\/)?(www\\.)?/, \"\")\r\n                      .split(\"/\")[0]\r\n                  }\r\n                </a>\r\n              </div>\r\n            </div>\r\n            <div className={\"info__item\"}>\r\n              <span>Explorers</span>\r\n              <div>\r\n                {coin.blockchain_site\r\n                  .filter((site) => site !== \"\")\r\n                  .map((site) => (\r\n                    <a className={\"item__link\"} href={site}>\r\n                      {\r\n                        site\r\n                          .replace(/^(https?:\\/\\/)?(www\\.)?/, \"\")\r\n                          .split(\"/\")[0]\r\n                      }\r\n                    </a>\r\n                  ))}\r\n              </div>\r\n            </div>\r\n            <div className={\"info__item\"}>\r\n              <span>Community</span>\r\n              <div className={\"contact__info\"}>\r\n                <a href={coin.subreddit_url} className={\"item__link\"}>\r\n                  <Reddit />\r\n                  Reddit\r\n                </a>\r\n              </div>\r\n            </div>\r\n            <div className={\"info__item\"}>\r\n              <span>Source Code</span>\r\n              <div className={\"contact__info\"}>\r\n                <a className={\"item__link\"} href={coin.repos_url_github}>\r\n                  Github\r\n                </a>\r\n              </div>\r\n            </div>\r\n            <div className={\"info__item\"}>\r\n              <span>API id</span>\r\n              <div className={\"item__link\"}>{coin.id}</div>\r\n            </div>\r\n            <div className={\"info__item\"}>\r\n              <span>Tags</span>\r\n              <div>\r\n                {coin.categories.map((category) => (\r\n                  <a className={\"item__link\"}>{category}</a>\r\n                ))}\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div>\r\n\r\n      <div></div>\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default CoinItemPage;\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/components/CoinItemPage.tsx b/src/components/CoinItemPage.tsx
+--- a/src/components/CoinItemPage.tsx	
++++ b/src/components/CoinItemPage.tsx	
+@@ -20,7 +20,7 @@
+   async function fetchSingleCoin() {
+     try {
+       const response = await axios.get<SingleCoinState>(
+-        `https://coingecko-back.onrender.com/getCoinData/${id}`
++        `localhost:4000/getCoinData/${id}`
+       );
+       setCoin(response.data);
+     } catch (e) {
+Index: src/store/action-creators/coin.ts
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import { CoinState } from \"../../types/coin\";\r\nimport { ThunkDispatch } from \"redux-thunk\";\r\nimport axios from \"axios\";\r\nimport { LikedCoinsActionTypes } from \"../../types/likedCoins\";\r\nimport { StoreCoinActionTypes } from \"../../types/storeCoin\";\r\nimport { CoinAction, CoinActionTypes } from \"../../types/store/coinReducer\";\r\n\r\nexport const fetchCoins = (limit = 10, page = 1) => {\r\n  return async (dispatch: ThunkDispatch<CoinState, undefined, CoinAction>) => {\r\n    try {\r\n      dispatch({ type: CoinActionTypes.FETCH_COINS });\r\n      const response = await axios.get(\r\n        `https://coingecko-back.onrender.com/getCoinsList/${limit}/${page}`\r\n      );\r\n\r\n      dispatch({\r\n        type: CoinActionTypes.FETCH_COINS_SUCCESS,\r\n        payload: response.data,\r\n      });\r\n    } catch (e: any) {\r\n      alert(e.response.data.error + \"\\nTry again in 5 minutes\");\r\n      dispatch({\r\n        type: CoinActionTypes.FETCH_COINS_ERROR,\r\n        payload: \"error in fetching coins\",\r\n      });\r\n    }\r\n  };\r\n};\r\n\r\nexport function setPage(page: number): CoinAction {\r\n  return { type: CoinActionTypes.SET_COIN_PAGE, payload: page };\r\n}\r\n\r\nexport const addCoin = (id: string) => {\r\n  return { type: LikedCoinsActionTypes.ADD, payload: id };\r\n};\r\n\r\nexport const removeCoin = (id: string) => {\r\n  return { type: LikedCoinsActionTypes.REMOVE, payload: id };\r\n};\r\n\r\nexport const write = (savedCoins: any[]) => {\r\n  return { type: LikedCoinsActionTypes.WRITE, payload: savedCoins };\r\n};\r\n\r\nexport const storeCoins = (storeCoins: any[]) => {\r\n  return { type: StoreCoinActionTypes.WRITE_IN_DB, payload: storeCoins };\r\n};\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/store/action-creators/coin.ts b/src/store/action-creators/coin.ts
+--- a/src/store/action-creators/coin.ts	
++++ b/src/store/action-creators/coin.ts	
+@@ -10,15 +10,15 @@
+     try {
+       dispatch({ type: CoinActionTypes.FETCH_COINS });
+       const response = await axios.get(
+-        `https://coingecko-back.onrender.com/getCoinsList/${limit}/${page}`
++        `localhost:4000/getCoinsList/${limit}/${page}`
+       );
+-
++      console.log(response);
+       dispatch({
+         type: CoinActionTypes.FETCH_COINS_SUCCESS,
+         payload: response.data,
+       });
+     } catch (e: any) {
+-      alert(e.response.data.error + "\nTry again in 5 minutes");
++      // alert(e.response.data.error + "\nTry again in 5 minutes");
+       dispatch({
+         type: CoinActionTypes.FETCH_COINS_ERROR,
+         payload: "error in fetching coins",
+Index: tsconfig.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>{\r\n  \"compilerOptions\": {\r\n    \"target\": \"es5\",\r\n    \"lib\": [\"dom\", \"dom.iterable\", \"esnext\"],\r\n    \"allowJs\": true,\r\n    \"skipLibCheck\": true,\r\n    \"esModuleInterop\": true,\r\n    \"allowSyntheticDefaultImports\": true,\r\n    \"strict\": true,\r\n    \"forceConsistentCasingInFileNames\": true,\r\n    \"noFallthroughCasesInSwitch\": true,\r\n    \"module\": \"esnext\",\r\n    \"moduleResolution\": \"node\",\r\n    \"resolveJsonModule\": true,\r\n    \"isolatedModules\": true,\r\n    \"noEmit\": true,\r\n    \"jsx\": \"react-jsx\"\r\n  },\r\n  \"include\": [\"src\"]\r\n}\r\n
+===================================================================
+diff --git a/tsconfig.json b/tsconfig.json
+--- a/tsconfig.json	
++++ b/tsconfig.json	
+@@ -15,6 +15,7 @@
+     "isolatedModules": true,
+     "noEmit": true,
+     "jsx": "react-jsx"
++//    "jsx": "react"
+   },
+   "include": ["src"]
+ }
+Index: src/components/RegPage.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React, { FC } from \"react\";\r\nimport RegForm from \"./RegForm/RegForm\";\r\n\r\nconst RegPage: FC = () => {\r\n  return (\r\n    <div>\r\n      <RegForm\r\n        endpoint={\"https://coingecko-back.onrender.com/auth/registration\"}\r\n        buttonText={\"Registration\"}\r\n      />\r\n    </div>\r\n  );\r\n};\r\nexport default RegPage;\r\n
+===================================================================
+diff --git a/src/components/RegPage.tsx b/src/components/RegPage.tsx
+--- a/src/components/RegPage.tsx	
++++ b/src/components/RegPage.tsx	
+@@ -5,7 +5,7 @@
+   return (
+     <div>
+       <RegForm
+-        endpoint={"https://coingecko-back.onrender.com/auth/registration"}
++        endpoint={"localhost:4000/auth/registration"}
+         buttonText={"Registration"}
+       />
+     </div>
+Index: src/components/LogInPage.tsx
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import React, { FC } from \"react\";\r\nimport RegForm from \"./RegForm/RegForm\";\r\n\r\nconst LogIn: FC = () => {\r\n  return (\r\n    <div>\r\n      <RegForm\r\n        endpoint={\"https://coingecko-back.onrender.com/auth/login\"}\r\n        buttonText={\"Log in\"}\r\n      />\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default LogIn;\r\n
+===================================================================
+diff --git a/src/components/LogInPage.tsx b/src/components/LogInPage.tsx
+--- a/src/components/LogInPage.tsx	
++++ b/src/components/LogInPage.tsx	
+@@ -4,10 +4,7 @@
+ const LogIn: FC = () => {
+   return (
+     <div>
+-      <RegForm
+-        endpoint={"https://coingecko-back.onrender.com/auth/login"}
+-        buttonText={"Log in"}
+-      />
++      <RegForm endpoint={"localhost:4000/auth/login"} buttonText={"Log in"} />
+     </div>
+   );
+ };
