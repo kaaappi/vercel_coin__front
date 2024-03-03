@@ -7,7 +7,6 @@ import { useActions } from "../hooks/useAction";
 const HomePage: FC = () => {
   const { fetchCoins } = useActions();
   const { storeCoins } = useActions();
-  // TODO можно-ли тут как-то оптимизировать/сделать по другому?
   const { coins, page, limit } = useTypedSelector((state) => state.coin);
   useEffect(() => {
     storeCoins(coins);

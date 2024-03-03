@@ -3,6 +3,8 @@ import { Coin } from "../../types/coin";
 import SelectCoin from "./SelectCoin";
 import { useNavigate } from "react-router-dom";
 import ArrowPrice from "../../images/arrow-for-price-change/ArrowPrice";
+import { useQuery } from "react-query";
+import axios from "axios";
 
 const ListItem: FC<Coin> = ({
   id,
@@ -18,6 +20,7 @@ const ListItem: FC<Coin> = ({
   const onClickTd = () => {
     navigate("/coins/" + id);
   };
+
   return (
     <tr>
       <td>{nums_of_coins + 1}</td>

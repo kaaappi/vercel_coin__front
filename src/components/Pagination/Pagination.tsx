@@ -24,7 +24,7 @@ const Pagination: FC<PaginationProps> = ({ totalPages, page, maxPages }) => {
             className={p === page ? "page page__current" : "page"}
           >
             {p}
-          </span>
+          </span>,
         );
       }
     } else {
@@ -37,7 +37,7 @@ const Pagination: FC<PaginationProps> = ({ totalPages, page, maxPages }) => {
               className={i === page ? "page page__current" : "page"}
             >
               {i}
-            </span>
+            </span>,
           );
         }
         paginationItems.push(<span key="dots1">...</span>);
@@ -48,13 +48,13 @@ const Pagination: FC<PaginationProps> = ({ totalPages, page, maxPages }) => {
             key={pagesArray.length}
           >
             {pagesArray.length}
-          </span>
+          </span>,
         );
       } else if (page >= pagesArray.length - 2) {
         paginationItems.push(
           <span onClick={() => setPage(1)} className="page" key={1}>
             1
-          </span>
+          </span>,
         );
         paginationItems.push(<span key="dots2">...</span>);
         for (let i = pagesArray.length - 4; i <= pagesArray.length; i++) {
@@ -65,14 +65,14 @@ const Pagination: FC<PaginationProps> = ({ totalPages, page, maxPages }) => {
               className={i === page ? "page page__current" : "page"}
             >
               {i}
-            </span>
+            </span>,
           );
         }
       } else {
         paginationItems.push(
           <span onClick={() => setPage(1)} className="page" key={1}>
             1
-          </span>
+          </span>,
         );
         paginationItems.push(<span key="dots3">...</span>);
         for (let i = page - 1; i <= page + 1; i++) {
@@ -83,7 +83,7 @@ const Pagination: FC<PaginationProps> = ({ totalPages, page, maxPages }) => {
               className={i === page ? "page page__current" : "page"}
             >
               {i}
-            </span>
+            </span>,
           );
         }
         paginationItems.push(<span key="dots4">...</span>);
@@ -94,7 +94,7 @@ const Pagination: FC<PaginationProps> = ({ totalPages, page, maxPages }) => {
             key={pagesArray.length}
           >
             {pagesArray.length}
-          </span>
+          </span>,
         );
       }
     }
@@ -103,7 +103,7 @@ const Pagination: FC<PaginationProps> = ({ totalPages, page, maxPages }) => {
   }, [page]);
 
   return (
-    <>
+    <div className={"pagination-wrapper"}>
       <span
         onClick={(e) => (page <= 1 ? e.preventDefault() : setPage(page - 1))}
         className={"arrow-move arrow-move-left"}
@@ -118,7 +118,7 @@ const Pagination: FC<PaginationProps> = ({ totalPages, page, maxPages }) => {
       >
         <ArrowInput className={"arrow-pagination arrow-right"} />
       </span>
-    </>
+    </div>
   );
 };
 

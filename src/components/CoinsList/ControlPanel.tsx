@@ -56,48 +56,53 @@ const ControlPanel: FC = () => {
 
   return (
     <>
-      <div className={"page__container"}>
-        <Pagination totalPages={totalPages} page={page} maxPages={5} />
-        <div className="page__wrapper">
-          <div className="input-wrapper">
-            <div className={"buttons"}>
+      <div>
+        <div className={"page__container"}>
+          <Pagination totalPages={totalPages} page={page} maxPages={5} />
+
+          <div className="page__wrapper">
+            <div className="input-wrapper">
+              <div className={"buttons"}>
+                <button
+                  className="arrow-top"
+                  onClick={incrementValue}
+                  onMouseEnter={handleHoverTop}
+                  onMouseLeave={handleHoverTop}
+                >
+                  <ArrowInput
+                    className={`${
+                      isTopHovered ? "arrow-black" : "arrow-white"
+                    }`}
+                  />
+                </button>
+                <button
+                  className="arrow-bottom"
+                  onClick={decrementValue}
+                  onMouseEnter={handleHoverBottom}
+                  onMouseLeave={handleHoverBottom}
+                >
+                  <ArrowInput
+                    className={`arrow ${
+                      isBottomHovered ? "arrow-black" : "arrow-white"
+                    }`}
+                  />
+                </button>
+              </div>
+
+              <input
+                type="text"
+                value={value}
+                onChange={handleInputChange}
+                className="input__change__amount"
+              />
               <button
-                className="arrow-top"
-                onClick={incrementValue}
-                onMouseEnter={handleHoverTop}
-                onMouseLeave={handleHoverTop}
+                onClick={changeLimit}
+                className="btn"
+                style={{ backgroundColor: "inherit" }}
               >
-                <ArrowInput
-                  className={`${isTopHovered ? "arrow-black" : "arrow-white"}`}
-                />
-              </button>
-              <button
-                className="arrow-bottom"
-                onClick={decrementValue}
-                onMouseEnter={handleHoverBottom}
-                onMouseLeave={handleHoverBottom}
-              >
-                <ArrowInput
-                  className={`arrow ${
-                    isBottomHovered ? "arrow-black" : "arrow-white"
-                  }`}
-                />
+                Change
               </button>
             </div>
-
-            <input
-              type="text"
-              value={value}
-              onChange={handleInputChange}
-              className="input__change__amount"
-            />
-            <button
-              onClick={changeLimit}
-              className="btn"
-              style={{ backgroundColor: "inherit" }}
-            >
-              Change
-            </button>
           </div>
         </div>
       </div>

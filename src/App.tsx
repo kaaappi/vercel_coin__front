@@ -11,9 +11,11 @@ import RequireAuth from "./components/RequireAuth";
 import LogIn from "./components/LogInPage";
 import RegPage from "./components/RegPage";
 import MErrorBoundary from "./components/ErrorBoundary/MErrorBoundary";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 const App: FC = () => {
   const { write } = useActions();
+  const queryClient = new QueryClient();
   useEffect(() => {
     const savedCoins = localStorage.getItem(storageId);
     if (savedCoins) {
@@ -22,24 +24,26 @@ const App: FC = () => {
   });
   return (
     <MErrorBoundary>
-      <BrowserRouter>
-        <SideNavigation />
-        <Routes>
-          <Route path={"/"} element={<CoinsPage />} />
-          <Route
-            path={"/coins"}
-            element={
-              <RequireAuth>
-                <HomePage />
-              </RequireAuth>
-            }
-          />
+      <QueryClientProvider client={queryClient}>
+        <BrowserRouter>
+          <SideNavigation />
+          <Routes>
+            <Route path={"/"} element={<CoinsPage />} />
+            <Route
+              path={"/coins"}
+              element={
+                <RequireAuth>
+                  <HomePage />
+                </RequireAuth>
+              }
+            />
 
-          <Route path={"/registration"} element={<RegPage />} />
-          <Route path={"/login"} element={<LogIn />} />
-          <Route path={"/coins/:id"} element={<CoinItemPage />} />
-        </Routes>
-      </BrowserRouter>
+            <Route path={"/registration"} element={<RegPage />} />
+            <Route path={"/login"} element={<LogIn />} />
+            <Route path={"/coins/:id"} element={<CoinItemPage />} />
+          </Routes>
+        </BrowserRouter>
+      </QueryClientProvider>
     </MErrorBoundary>
   );
 };

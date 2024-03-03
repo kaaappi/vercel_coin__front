@@ -4,7 +4,7 @@ const initialState: any[] = [];
 
 export const likedCoinReducer = (
   state = initialState,
-  action: LikeAction
+  action: LikeAction,
 ): any[] => {
   switch (action.type) {
     case LikedCoinsActionTypes.ADD:

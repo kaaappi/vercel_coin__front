@@ -7,7 +7,6 @@ interface RequireAuthProps {
 
 const RequireAuth = ({ children }: RequireAuthProps) => {
   const token = localStorage.getItem("jwtToken");
-  console.log(!token); //TODO норм? при регистрации мне токен не отдаётся и он undefined
   if (!token) {
     return <Navigate to={"/registration"} />;
   }

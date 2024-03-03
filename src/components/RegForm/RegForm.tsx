@@ -1,134 +1,147 @@
 import React, { FC, useState } from "react";
-import axios from "axios";
-import { response } from "express";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import {
+  Button,
+  ChakraProvider,
+  FormControl,
+  FormErrorMessage,
+  FormLabel,
+  Input,
+} from "@chakra-ui/react";
+import endpoint from "../../api-url/endpoint";
 
-interface RegFormProps {
-  endpoint: string;
-  buttonText: string;
+export interface IUser {
+  username: string;
+  password: string;
+}
+interface iRegFrom {
+  accountAction: string;
+  greet: string;
+  link: string;
 }
 
-const RegForm: FC<RegFormProps> = ({ endpoint, buttonText }) => {
-  const [username, setUserName] = useState<any>();
-  const [password, setPassword] = useState<any>();
-  const [usernameIsValid, setUsernameError] = useState(false);
-  const [passwordIsValid, setPasswordError] = useState(false);
+const RegForm: FC<iRegFrom> = ({ accountAction, greet }) => {
   const navigate = useNavigate();
-  const handleUsernameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setUserName(value);
-    validateUsername(value);
-  };
 
-  const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setPassword(value);
-    validatePassword(value);
-  };
   const validateUsername = (value: string) => {
-    if (value === "") {
-      setUsernameError(false);
-    } else {
-      setUsernameError(true);
+    let error;
+    if (!value) {
+      error = "Username is Required";
     }
-  };
-  const validatePassword = (value: string) => {
-    if (value.length < 4 || value.length > 9) {
-      setPasswordError(false);
-    } else {
-      setPasswordError(true);
-    }
+    return error;
   };
 
-  const handleRegistration = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    if (usernameIsValid && passwordIsValid) {
-      const response = await axios
-        .post(endpoint, {
-          username: username,
-          password: password,
-        })
-        .catch(function (error) {
-          if (error.response.data) {
-            alert(
-              `${error.response.data.message}:${
-                error.response.data.errors === undefined
-                  ? null
-                  : error.response.data.errors.errors.map(
-                      (error: any) => error.msg
-                    )
-              }`
-            );
-          }
-        })
-        .then(function (response) {
-          if (response) localStorage.setItem("jwtToken", response.data.token);
-          navigate("/");
-        });
-    } else {
-      alert("Please fix the validation errors.");
+  const validatePassword = (value: string) => {
+    let error;
+    if (!value) {
+      error = "Password is required";
+    } else if (value.length < 4 || value.length > 10) {
+      error = "Password must be >4 and <10 symbols";
     }
+    return error;
+  };
+
+  const handleSubmit = async (params: IUser) => {
+    try {
+      const response = await axios.post(`${endpoint}/auth/login`, {
+        username: params.username,
+        password: params.password,
+      });
+      if (response) {
+        localStorage.setItem("jwtToken", response.data.token);
+        navigate("/coins");
+      }
+    } catch (error: any) {
+      console.error(error, "handleSubmit in newRegForm");
+      alert("Error on submit");
+    }
+  };
+  const handleClickChooseType = () => {
+    accountAction === "Login" ? navigate("/registration") : navigate("/login");
   };
 
   return (
-    <div className="container__for__registration">
-      <form>
-        <h2 className="centre_h2">{buttonText}</h2>
-        <div className="input__container">
-          <input
-            placeholder={"Username *"}
-            type="text"
-            value={username}
-            onChange={handleUsernameChange}
-            className={
-              usernameIsValid ? "input__reg valid" : "input__reg invalid"
-            }
-          />
-          <span
-            className={
-              usernameIsValid ? "info__form positive" : "info__form negative"
-            }
+    <div className={"primary__container"}>
+      <div className={"login__container"}>
+        <ChakraProvider>
+          <Formik
+            initialValues={{ username: "", password: "" }}
+            onSubmit={(values, actions) => {
+              handleSubmit(values);
+              actions.setSubmitting(false);
+            }}
           >
-            Username is required
-          </span>
-        </div>
-        <div className="input__container">
-          <input
-            placeholder={"Password *"}
-            type="password"
-            value={password}
-            autoComplete="on"
-            onChange={handlePasswordChange}
-            className={
-              passwordIsValid ? "input__reg valid" : "input__reg invalid"
-            }
-          />
-          <span
-            className={
-              passwordIsValid ? "info__form positive" : "info__form negative"
-            }
-          >
-            Password is required
-          </span>
-          {passwordIsValid ? (
-            <div className="info__form positive">✔️</div>
-          ) : (
-            <div className="info__form negative">
-              Must be more than 4 symbols and less than 12
-            </div>
-          )}
-        </div>
-        <button onClick={handleRegistration} className="btn btn__register">
-          {buttonText}
-        </button>
-        {buttonText === "Registration" ? (
-          <div onClick={() => navigate("/login")} className="link__reg">
-            Already have an account? Log in
-          </div>
-        ) : (
-          ""
-        )}
-      </form>
+            {(props) => (
+              <Form className={"form__container"}>
+                <div className={"upper__login__container"}>
+                  <h1 className={"h1__rewrite"}>{greet}</h1>
+                  <h2 className={"h2__rewrite"}>
+                    Please enter your details to {accountAction}.
+                  </h2>
+                </div>
+
+                <Field name="username" validate={validateUsername}>
+                  {({ field, form }: any) => (
+                    <FormControl
+                      isInvalid={form.errors.username && form.touched.username}
+                      mt={10}
+                    >
+                      <FormLabel>Username</FormLabel>
+                      <Input {...field} focusBorderColor={"white"} />
+                      <ErrorMessage
+                        name="username"
+                        component={FormErrorMessage}
+                      />
+                    </FormControl>
+                  )}
+                </Field>
+                <Field name="password" validate={validatePassword}>
+                  {({ field, form }: any) => (
+                    <FormControl
+                      isInvalid={form.errors.password && form.touched.password}
+                      mt={10}
+                    >
+                      <FormLabel>Password</FormLabel>
+                      <Input
+                        {...field}
+                        type="password"
+                        focusBorderColor={"white"}
+                      />
+                      <ErrorMessage
+                        name="password"
+                        component={FormErrorMessage}
+                      />
+                    </FormControl>
+                  )}
+                </Field>
+                <Button
+                  mt={14}
+                  className={"login__btn"}
+                  colorScheme="whiteAlpha"
+                  variant="outline"
+                  isLoading={props.isSubmitting}
+                  type="submit"
+                >
+                  {accountAction}
+                </Button>
+                <div className={"bottom__login__container"}>
+                  <span>
+                    Don't have an account?{" "}
+                    <span
+                      className={"login__link "}
+                      onClick={handleClickChooseType}
+                    >
+                      {accountAction === "Login" ? "Register" : "Login"}
+                    </span>
+                  </span>
+                </div>
+              </Form>
+            )}
+          </Formik>
+        </ChakraProvider>
+      </div>
     </div>
   );
 };

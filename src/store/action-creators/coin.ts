@@ -4,23 +4,21 @@ import axios from "axios";
 import { LikedCoinsActionTypes } from "../../types/likedCoins";
 import { StoreCoinActionTypes } from "../../types/storeCoin";
 import { CoinAction, CoinActionTypes } from "../../types/store/coinReducer";
+import endpoint from "../../api-url/endpoint";
 
 export const fetchCoins = (limit = 10, page = 1) => {
   return async (dispatch: ThunkDispatch<CoinState, undefined, CoinAction>) => {
     try {
       dispatch({ type: CoinActionTypes.FETCH_COINS });
       const response = await axios.get(
-        `http://localhost:4000/getCoinsList/${limit}/${page}`
-        // `https://coingecko-back.onrender.com/${limit}/${page}`
-        // `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=${limit}&page=${page}&sparkline=false&locale=en`
+        `${endpoint}/getCoinsList/${limit}/${page}`,
       );
-      console.log(response);
       dispatch({
         type: CoinActionTypes.FETCH_COINS_SUCCESS,
         payload: response.data,
       });
     } catch (e: any) {
-      alert(e.response.data.error + "\nTry again in 5 minutes");
+      alert("\nTry again in 5 minutes");
       dispatch({
         type: CoinActionTypes.FETCH_COINS_ERROR,
         payload: "error in fetching coins",

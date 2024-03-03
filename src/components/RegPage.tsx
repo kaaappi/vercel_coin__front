@@ -1,12 +1,14 @@
 import React, { FC } from "react";
 import RegForm from "./RegForm/RegForm";
+import endpoint from "../api-url/endpoint";
 
 const RegPage: FC = () => {
   return (
     <div>
       <RegForm
-        endpoint={"https://coingecko-back.onrender.com/auth/registration"}
-        buttonText={"Registration"}
+        accountAction={"Registration"}
+        greet={"Welcome"}
+        link={`${endpoint}/auth/registration`}
       />
     </div>
   );

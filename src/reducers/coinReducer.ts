@@ -11,7 +11,7 @@ const initialState: CoinState = {
 
 export const coinReducer = (
   state = initialState,
-  action: CoinAction
+  action: CoinAction,
 ): CoinState => {
   switch (action.type) {
     case CoinActionTypes.FETCH_COINS:

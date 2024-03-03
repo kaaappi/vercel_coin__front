@@ -6,6 +6,7 @@ import ArrowPrice from "../images/arrow-for-price-change/ArrowPrice";
 import ArrowChangePercentage from "../images/arrow-change-percentage/ArrowChangePercentage";
 import Reddit from "../images/logos/Reddit";
 import LineChart from "./Chart/LineChart";
+import endpoint from "../api-url/endpoint";
 
 type CoinItemPageParams = {
   id: string;
@@ -20,9 +21,8 @@ const CoinItemPage: FC = () => {
   async function fetchSingleCoin() {
     try {
       const response = await axios.get<SingleCoinState>(
-        `https://coingecko-back.onrender.com/getCoinData/${id}`
+        `${endpoint}/getCoinData/${id}`,
       );
-      console.log(response.data);
       setCoin(response.data);
     } catch (e) {
       alert(e);

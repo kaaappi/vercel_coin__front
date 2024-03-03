@@ -12,6 +12,7 @@ import {
   Legend,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
+import endpoint from "../../api-url/endpoint";
 
 ChartJS.register(
   CategoryScale,
@@ -20,7 +21,7 @@ ChartJS.register(
   LineElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
 );
 
 const options = {
@@ -96,7 +97,7 @@ const LineChart: FC<ILineChart> = ({ coin_id, days }) => {
   async function fetchPricesData() {
     try {
       const response = await axios.get<PricesDataState>(
-        `https://coingecko-back.onrender.com/getChartForCoin/${coin_id}/${days}`
+        `${endpoint}/getChartForCoin/${coin_id}/${days}`,
       );
       setDataForChart(response.data.prices);
     } catch (e) {

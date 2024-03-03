@@ -5,10 +5,43 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53b6e84a-fe1b-45b6-8f9e-e7a5ce413d63" name="Changes" comment="refactor (minor changes) : code clean up">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_12_12_2023_15_43_[Changes]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_12_12_2023_15_44_[Changes]/shelved.patch" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api-url/endpoint.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/RegForm/newRegForm.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Button/Button.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Chart/LineChart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Chart/LineChart.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CoinItemPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CoinItemPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CoinsList/ControlPanel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CoinsList/ControlPanel.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CoinsList/ListItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CoinsList/ListItem.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CoinsList/SelectCoin.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CoinsList/SelectCoin.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CoinsList/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CoinsList/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/CoinsPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CoinsPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ErrorBoundary/MErrorBoundary.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ErrorBoundary/MErrorBoundary.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/HomePage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomePage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/LogInPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LogInPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Pagination/Pagination.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Pagination/Pagination.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RegForm/RegForm.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RegForm/OLDRegForm.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RegPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RegPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RequireAuth.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RequireAuth.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/SideNav/SideNavigation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/SideNav/SideNavigation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UI/Loader/Loader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/Loader/Loader.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UI/Loader/Loader.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UI/Loader/Loader.module.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/heart/Heart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/heart/Heart.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/imgs-for-side-nav/SideNavHeart.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/imgs-for-side-nav/SideNavHeart.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/images/logos/Twitter.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/logos/Twitter.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/coinReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/coinReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/likedCoinReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/likedCoinReducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/storeCoinReducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/storeCoinReducer.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/action-creators/coin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/action-creators/coin.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/types/coin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/types/coin.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/utils/sortData.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/sortData.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +103,7 @@
     "ignore.virus.scanning.warn.message": "true",
     "javascript.nodejs.core.library.configured.version": "20.5.1",
     "javascript.nodejs.core.library.typings.version": "20.5.9",
-    "last_opened_file_path": "D:/all_in_it/foo/typeScript/server-coinGecko",
+    "last_opened_file_path": "D:/all_in_it/foo/todo/fortuna",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -154,7 +187,9 @@
       <workItem from="1702412049117" duration="25000" />
       <workItem from="1702412081899" duration="7000" />
       <workItem from="1702412726211" duration="15000" />
-      <workItem from="1708265405566" duration="2749000" />
+      <workItem from="1708265405566" duration="5258000" />
+      <workItem from="1708680749393" duration="2000" />
+      <workItem from="1709061148198" duration="29463000" />
     </task>
     <task id="LOCAL-00001" summary="initial">
       <option name="closed" value="true" />
